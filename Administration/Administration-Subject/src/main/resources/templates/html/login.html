@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登陆页面</title>
+</head>
+<body>
+<h1>登陆</h1>
+	 
+	           <span>用户名:</span><input type="text" value="23121@qq.com" id="userName" name="email" placeholder="userName"/><br/>
+	            
+	           <span>密码:      </span><input type="password" value="123123" id="password" name="pwd" placeholder="password"/><br/>
+	           <span><input type="button" value="登陆"  onclick="login()"/></span><br/>
+	           <input type="radio" name="tablename" value="apply_leverage"/>杠杆比例
+	           <input type="radio" name="tablename" value="apply_transfer"/>内部转账
+	           <input type="radio" name="tablename" value="apply_login"/>同名账户
+	           <input type="radio" name="tablename" value="apply_password"/>交易密码
+	           <span><input type="button" value="审核"  onclick="sh()"/></span><br/>
+	           <span><input type="button" value="杠杆比例查询"  onclick="leverage()"/></span><br/>
+	           <span><input type="button" value="内部转账查询"  onclick="Transfer()"/></span><br/>
+	           <span><input type="button" value="同名账户查询"  onclick="ApplyLogin()"/></span><br/>
+	           <span><input type="button" value="交易密码查询"  onclick="ApplyPassword()"/></span><br/>
+	           <span><input type="button" value="市场营销"  onclick="AccountMarketingEmail()"/></span><br/>
+	           <p>-----------------------------------------------------------------------------------</p>
+			   <span><input type="button" value="准账户查询"  onclick="FindAccount()"/></span>
+ 
+			    
+
+	            
+	 
+</body>
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+   function login(){
+	  var useremail=$("#userName").val();
+	  var userpwd=$("#password").val();
+	   $.ajax({
+           url:"../user/login", //处理页面的路径
+           data:{'useremail':useremail,'userpwd':userpwd}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               }
+       });
+	   
+   }
+   function leverage(){
+	   var key = ['serial','status','name'];
+	   var value = ['201903140035185608','1','1231123123'];
+	   $.ajax({
+           url:"../ApplyLeverage/FindApplyLeverage", //处理页面的路径
+           data:{"key":key,"value":value}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               },
+               error:function(response){
+                   //alert(response.status);//自定义错误状态码 401
+                   console.log(response.status);
+               }
+       });
+   }
+   function Transfer(){
+	   var key = ['serial','status','from','to'];
+	   var value = ['20190217141202507','2','1818997',"132213"];
+	   $.ajax({
+           url:"../ApplyLeverage/FindApplyTransfer", //处理页面的路径
+           data:{"key":key,"value":value}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               }
+       });
+   }
+   function ApplyLogin(){
+	   var key = ['serial','status','presentlogin'];
+	   var value = ['201903140003281389','1','80000015'];
+	   $.ajax({
+           url:"../ApplyLeverage/FindApplyLogin", //处理页面的路径
+           data:{"key":key,"value":value}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               }
+       });
+   }
+   function ApplyPassword(){
+	   var key = ['login','status'];
+	   var value = ['80000015','1'];
+	   $.ajax({
+           url:"../ApplyLeverage/FindApplyPassword", //处理页面的路径
+           data:{"key":key,"value":value}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               }
+       });
+   }
+   
+   function AccountMarketingEmail(){
+	   var key = ['login','name'];
+	   var value = ['80000015','1231123123'];
+	   $.ajax({
+           url:"../ApplyLeverage/FindAccountMarketingEmail", //处理页面的路径
+           data:{"key":key,"value":value}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               }
+       });
+   }
+   
+   function FindAccount(){
+	   var key = ['option','checkemail','mobilephonenumber','email'];
+	   var value = ['1','0','132','1002671817@QQ.com'];
+	   $.ajax({
+           url:"../account/FindAccount", //处理页面的路径
+           data:{"key":key,"value":value}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               }
+       });
+   }
+   function sh(){
+	   
+	   var val = $('input[name="tablename"]:checked').val();
+	   var key = ['comment','status','id',"tablename"];
+	   var value = ['测试备注','1','21',val];
+	   $.ajax({
+           url:"../ApplyLeverage/UpdateApply", //处理页面的路径
+           data:{"key":key,"value":value}, //要提交的数据是一个JSON
+           type:"POST", //提交方式
+           dataType:"json", //返回数据的类型
+           //TEXT字符串 JSON返回JSON XML返回XML
+           success:function(data){ //回调函数 ,成功时返回的数据存在形参data里
+                    console.log(data);
+               }
+               
+       });
+   }
+</script>
+</html>

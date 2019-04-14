@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.administration.account.dao.AccountMapper">
+  <resultMap id="AccountMap" type="com.administration.account.pojo.Account">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="Add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="TINYINT" property="status" />
+    <result column="Examine_time" jdbcType="TIMESTAMP" property="examineTime" />
+    <result column="login" jdbcType="BIGINT" property="login" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="middle_name" jdbcType="VARCHAR" property="middleName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="option" jdbcType="TINYINT" property="option" />
+    <result column="citizenship" jdbcType="VARCHAR" property="citizenship" />
+    <result column="place_of_birth" jdbcType="VARCHAR" property="placeOfBirth" />
+    <result column="foreign_status" jdbcType="VARCHAR" property="foreignStatus" />
+    <result column="explain_status" jdbcType="VARCHAR" property="explainStatus" />
+    <result column="country_of_residence" jdbcType="VARCHAR" property="countryOfResidence" />
+    <result column="ssn1" jdbcType="VARCHAR" property="ssn1" />
+    <result column="ssn2" jdbcType="VARCHAR" property="ssn2" />
+    <result column="ssn3" jdbcType="VARCHAR" property="ssn3" />
+    <result column="id_type" jdbcType="VARCHAR" property="idType" />
+    <result column="identification_number" jdbcType="VARCHAR" property="identificationNumber" />
+    <result column="birth_date" jdbcType="BIGINT" property="birthDate" />
+    <result column="birth_month" jdbcType="VARCHAR" property="birthMonth" />
+    <result column="birth_year" jdbcType="INTEGER" property="birthYear" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="address_ua_number" jdbcType="VARCHAR" property="addressUaNumber" />
+    <result column="address_street_number" jdbcType="VARCHAR" property="addressStreetNumber" />
+    <result column="address_street_name" jdbcType="VARCHAR" property="addressStreetName" />
+    <result column="city_town" jdbcType="VARCHAR" property="cityTown" />
+    <result column="province_region" jdbcType="VARCHAR" property="provinceRegion" />
+    <result column="zp_code" jdbcType="VARCHAR" property="zpCode" />
+    <result column="flat" jdbcType="VARCHAR" property="flat" />
+    <result column="house_name" jdbcType="VARCHAR" property="houseName" />
+    <result column="house_number" jdbcType="VARCHAR" property="houseNumber" />
+    <result column="street" jdbcType="VARCHAR" property="street" />
+    <result column="years" jdbcType="VARCHAR" property="years" />
+    <result column="months" jdbcType="VARCHAR" property="months" />
+    <result column="mobile_phone_country" jdbcType="VARCHAR" property="mobilePhoneCountry" />
+    <result column="phone_country_code" jdbcType="VARCHAR" property="phoneCountryCode" />
+    <result column="mobile_phone_number" jdbcType="VARCHAR" property="mobilePhoneNumber" />
+    <result column="employment_status" jdbcType="VARCHAR" property="employmentStatus" />
+    <result column="job_industry" jdbcType="VARCHAR" property="jobIndustry" />
+    <result column="work_industry_department" jdbcType="VARCHAR" property="workIndustryDepartment" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="first_please_specify" jdbcType="VARCHAR" property="firstPleaseSpecify" />
+    <result column="source_of_income" jdbcType="VARCHAR" property="sourceOfIncome" />
+    <result column="experience_trading" jdbcType="VARCHAR" property="experienceTrading" />
+    <result column="trading_frequency_trades" jdbcType="VARCHAR" property="tradingFrequencyTrades" />
+    <result column="trading_number_trades" jdbcType="VARCHAR" property="tradingNumberTrades" />
+    <result column="experience_leveraged" jdbcType="VARCHAR" property="experienceLeveraged" />
+    <result column="leveraged_frequency_trades" jdbcType="VARCHAR" property="leveragedFrequencyTrades" />
+    <result column="leveraged_number_trades" jdbcType="VARCHAR" property="leveragedNumberTrades" />
+    <result column="experience_futures" jdbcType="VARCHAR" property="experienceFutures" />
+    <result column="futures_frequency_trades" jdbcType="VARCHAR" property="futuresFrequencyTrades" />
+    <result column="futures_number_trades" jdbcType="VARCHAR" property="futuresNumberTrades" />
+    <result column="knowledge_cwg" jdbcType="TINYINT" property="knowledgeCwg" />
+    <result column="please_specify" jdbcType="VARCHAR" property="pleaseSpecify" />
+    <result column="total_annual_income" jdbcType="VARCHAR" property="totalAnnualIncome" />
+    <result column="net_worth" jdbcType="VARCHAR" property="netWorth" />
+    <result column="savings_investments" jdbcType="VARCHAR" property="savingsInvestments" />
+    <result column="investment_amount" jdbcType="VARCHAR" property="investmentAmount" />
+    <result column="bankruptcy" jdbcType="TINYINT" property="bankruptcy" />
+    <result column="indicate_discharge" jdbcType="VARCHAR" property="indicateDischarge" />
+    <result column="full_amount" jdbcType="TINYINT" property="fullAmount" />
+    <result column="associated_person" jdbcType="TINYINT" property="associatedPerson" />
+    <result column="describe_relationship" jdbcType="VARCHAR" property="describeRelationship" />
+    <result column="security_question" jdbcType="VARCHAR" property="securityQuestion" />
+    <result column="security_answer" jdbcType="VARCHAR" property="securityAnswer" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="verify_password" jdbcType="VARCHAR" property="verifyPassword" />
+    <result column="referring_agent" jdbcType="VARCHAR" property="referringAgent" />
+    <result column="transaction_method" jdbcType="VARCHAR" property="transactionMethod" />
+    <result column="trading_risks" jdbcType="TINYINT" property="tradingRisks" />
+    <result column="disposable_income" jdbcType="TINYINT" property="disposableIncome" />
+    <result column="have_trading_experience" jdbcType="TINYINT" property="haveTradingExperience" />
+    <result column="remove_ability" jdbcType="TINYINT" property="removeAbility" />
+    <result column="agree_terms" jdbcType="TINYINT" property="agreeTerms" />
+    <result column="understood_risk" jdbcType="TINYINT" property="understoodRisk" />
+    <result column="my_behalf" jdbcType="TINYINT" property="myBehalf" />
+    <result column="understood_policy" jdbcType="TINYINT" property="understoodPolicy" />
+    <result column="execute_stock_limit_order" jdbcType="TINYINT" property="executeStockLimitOrder" />
+    <result column="suitable_products" jdbcType="TINYINT" property="suitableProducts" />
+    <result column="key_information" jdbcType="TINYINT" property="keyInformation" />
+    <result column="secondary_first_name" jdbcType="VARCHAR" property="secondaryFirstName" />
+    <result column="secondary_middle_name" jdbcType="VARCHAR" property="secondaryMiddleName" />
+    <result column="secondary_last_name" jdbcType="VARCHAR" property="secondaryLastName" />
+    <result column="secondary_citizenship" jdbcType="VARCHAR" property="secondaryCitizenship" />
+    <result column="secondary_birth_place" jdbcType="VARCHAR" property="secondaryBirthPlace" />
+    <result column="secondary_foreign_status" jdbcType="VARCHAR" property="secondaryForeignStatus" />
+    <result column="secondary_explain_status" jdbcType="VARCHAR" property="secondaryExplainStatus" />
+    <result column="secondary_ssn1" jdbcType="VARCHAR" property="secondarySsn1" />
+    <result column="secondary_ssn2" jdbcType="VARCHAR" property="secondarySsn2" />
+    <result column="secondary_ssn3" jdbcType="VARCHAR" property="secondarySsn3" />
+    <result column="secondary_residence_country" jdbcType="VARCHAR" property="secondaryResidenceCountry" />
+    <result column="secondary_id_type" jdbcType="VARCHAR" property="secondaryIdType" />
+    <result column="secondary_identification_number" jdbcType="VARCHAR" property="secondaryIdentificationNumber" />
+    <result column="secondary_birth_date" jdbcType="INTEGER" property="secondaryBirthDate" />
+    <result column="secondary_birth_month" jdbcType="VARCHAR" property="secondaryBirthMonth" />
+    <result column="secondary_birth_year" jdbcType="INTEGER" property="secondaryBirthYear" />
+    <result column="secondary_same_primary" jdbcType="TINYINT" property="secondarySamePrimary" />
+    <result column="secondary_address_ua_number" jdbcType="VARCHAR" property="secondaryAddressUaNumber" />
+    <result column="secondary_address_street_number" jdbcType="VARCHAR" property="secondaryAddressStreetNumber" />
+    <result column="secondary_address_street_name" jdbcType="VARCHAR" property="secondaryAddressStreetName" />
+    <result column="secondary_city_town" jdbcType="VARCHAR" property="secondaryCityTown" />
+    <result column="secondary_province_region" jdbcType="VARCHAR" property="secondaryProvinceRegion" />
+    <result column="secondary_zp_code" jdbcType="VARCHAR" property="secondaryZpCode" />
+    <result column="secondary_uk_flat" jdbcType="VARCHAR" property="secondaryUkFlat" />
+    <result column="secondary_uk_house_name" jdbcType="VARCHAR" property="secondaryUkHouseName" />
+    <result column="secondary_uk_house_number" jdbcType="VARCHAR" property="secondaryUkHouseNumber" />
+    <result column="secondary_uk_street" jdbcType="VARCHAR" property="secondaryUkStreet" />
+    <result column="secondary_years" jdbcType="VARCHAR" property="secondaryYears" />
+    <result column="secondary_months" jdbcType="VARCHAR" property="secondaryMonths" />
+    <result column="secondary_mobile_phone_country" jdbcType="VARCHAR" property="secondaryMobilePhoneCountry" />
+    <result column="secondary_phone_country_code" jdbcType="VARCHAR" property="secondaryPhoneCountryCode" />
+    <result column="secondary_mobile_phone_number" jdbcType="VARCHAR" property="secondaryMobilePhoneNumber" />
+    <result column="secondary_employment_status" jdbcType="VARCHAR" property="secondaryEmploymentStatus" />
+    <result column="secondary_job_industry" jdbcType="VARCHAR" property="secondaryJobIndustry" />
+    <result column="secondary_position" jdbcType="VARCHAR" property="secondaryPosition" />
+    <result column="secondary_income_source" jdbcType="VARCHAR" property="secondaryIncomeSource" />
+    <result column="secondary_please_specify" jdbcType="VARCHAR" property="secondaryPleaseSpecify" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="agent_id" jdbcType="VARCHAR" property="agentId" />
+    <result column="commission" jdbcType="DECIMAL" property="commission" />
+    <result column="check_email" jdbcType="TINYINT" property="checkEmail" />
+    <result column="remittance_channel" jdbcType="VARCHAR" property="remittanceChannel" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_addr" jdbcType="VARCHAR" property="bankAddr" />
+    <result column="swift_code" jdbcType="VARCHAR" property="swiftCode" />
+    <result column="bank_uname" jdbcType="VARCHAR" property="bankUname" />
+    <result column="bank_card_num" jdbcType="VARCHAR" property="bankCardNum" />
+    <result column="bank_branch_name" jdbcType="VARCHAR" property="bankBranchName" />
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="en_name" jdbcType="VARCHAR" property="enname"/>
+  </resultMap>
+  <sql id="AccountList">
+    id, Add_time, Status, Examine_time, login, first_name, middle_name, last_name, email, 
+    currency, option, citizenship, place_of_birth, foreign_status, explain_status, country_of_residence, 
+    ssn1, ssn2, ssn3, id_type, identification_number, birth_date, birth_month, birth_year, 
+    gender, address_ua_number, address_street_number, address_street_name, city_town, 
+    province_region, zp_code, flat, house_name, house_number, street, years, months, 
+    mobile_phone_country, phone_country_code, mobile_phone_number, employment_status, 
+    job_industry, work_industry_department, position, first_please_specify, source_of_income, 
+    experience_trading, trading_frequency_trades, trading_number_trades, experience_leveraged, 
+    leveraged_frequency_trades, leveraged_number_trades, experience_futures, futures_frequency_trades, 
+    futures_number_trades, knowledge_cwg, please_specify, total_annual_income, net_worth, 
+    savings_investments, investment_amount, bankruptcy, indicate_discharge, full_amount, 
+    associated_person, describe_relationship, security_question, security_answer, password, 
+    verify_password, referring_agent, transaction_method, trading_risks, disposable_income, 
+    have_trading_experience, remove_ability, agree_terms, understood_risk, my_behalf, 
+    understood_policy, execute_stock_limit_order, suitable_products, key_information, 
+    secondary_first_name, secondary_middle_name, secondary_last_name, secondary_citizenship, 
+    secondary_birth_place, secondary_foreign_status, secondary_explain_status, secondary_ssn1, 
+    secondary_ssn2, secondary_ssn3, secondary_residence_country, secondary_id_type, secondary_identification_number, 
+    secondary_birth_date, secondary_birth_month, secondary_birth_year, secondary_same_primary, 
+    secondary_address_ua_number, secondary_address_street_number, secondary_address_street_name, 
+    secondary_city_town, secondary_province_region, secondary_zp_code, secondary_uk_flat, 
+    secondary_uk_house_name, secondary_uk_house_number, secondary_uk_street, secondary_years, 
+    secondary_months, secondary_mobile_phone_country, secondary_phone_country_code, secondary_mobile_phone_number, 
+    secondary_employment_status, secondary_job_industry, secondary_position, secondary_income_source, 
+    secondary_please_specify, username, agent_id, commission, check_email, remittance_channel, 
+    platform, bank_name, bank_addr, swift_code, bank_uname, bank_card_num, bank_branch_name
+  </sql>
+    <select id="FindAccount" parameterType="java.util.Map"  resultMap="AccountMap">
+      	SELECT
+			concat( 'Mr.', account.first_name, ' ', last_name ) AS NAME,
+			account.birth_date,
+			account.email,
+			account.check_email,
+			account.mobile_phone_number,
+			account.Add_time,
+			account.agent_id,
+			account.commission,
+			city_test.en_name,
+			account.platform,
+			account.id,
+			account.option
+		FROM
+			account
+			INNER JOIN city_test ON account.place_of_birth = city_test.CODE 
+			<trim prefix="WHERE" prefixOverrides="and">
+			  <if test="option!=null">
+			     account.option=#{option}
+			  </if>
+			  <if test="checkemail!=null">
+			    and account.check_email=#{checkemail}
+			  </if>
+			  <if test="mobilephonenumber!=null">
+			    and account.mobile_phone_number=#{mobilephonenumber}
+			  </if>
+			  <if test="email!=null">
+			    and account.email=#{email}
+			  </if>
+			</trim>
+    </select>
+  
+  
+  
+  </mapper>

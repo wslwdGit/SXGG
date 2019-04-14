@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.administration.subject.dao.CrmUserMapper">
+
+
+  <resultMap id="CrmUserMap" type="com.administration.subject.pojo.CrmUser">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="Role" jdbcType="INTEGER" property="role" />
+    <result column="Mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="Account_addr" jdbcType="VARCHAR" property="accountAddr" />
+    <result column="Last_err_time" jdbcType="TIMESTAMP" property="lastErrTime" />
+    <result column="Err_number" jdbcType="INTEGER" property="errNumber" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <association property="roleMgmt" javaType="com.administration.subject.pojo.RoleMgmt"
+            column="Id" resultMap="RoleMgmtMap"/>
+  </resultMap>
+  
+  <resultMap id="RoleMgmtMap" type="com.administration.subject.pojo.RoleMgmt">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="Content" jdbcType="VARCHAR" property="content" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="Role_Id" jdbcType="INTEGER" property="roleId" />
+  </resultMap>
+   
+ 
+   
+
+   <select id="getUser" parameterType="String"  resultMap="CrmUserMap">
+	select * from crm_user inner join role_mgmt on role_mgmt.id=crm_user.Role
+	where crm_user.Email = #{name} and crm_user.Pwd = #{pwd}
+   </select>
+</mapper>

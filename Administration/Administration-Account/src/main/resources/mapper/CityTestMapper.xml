@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.administration.account.dao.CityTestMapper">
+  <resultMap id="BaseResultMap" type="com.administration.account.pojo.CityTest">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="en_name" jdbcType="VARCHAR" property="enName" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="valid_for_started" jdbcType="TINYINT" property="validForStarted" />
+    <result column="calling_code" jdbcType="VARCHAR" property="callingCode" />
+  </resultMap>
+   
+</mapper>

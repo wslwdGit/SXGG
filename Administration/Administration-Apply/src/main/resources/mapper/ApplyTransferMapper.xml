@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.administration.apply.dao.ApplyTransferMapper">
+  <resultMap id="ApplyTransferMap" type="com.administration.apply.pojo.ApplyTransfer">
+    
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="serial" jdbcType="VARCHAR" property="serial" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="from" jdbcType="BIGINT" property="from" />
+    <result column="to" jdbcType="BIGINT" property="to" />
+    <result column="number" jdbcType="DECIMAL" property="number" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="approve_user" jdbcType="BIGINT" property="approveUser" />
+    <result column="approve_time" jdbcType="TIMESTAMP" property="approveTime" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="total" jdbcType="VARCHAR" property="total"/>
+  </resultMap>
+  
+  <select id="findApplyTransfer" parameterType="java.util.Map"  resultMap="ApplyTransferMap">
+    select *,(select count(1) from apply_transfer) as total
+     from apply_transfer
+    <trim prefix="where" prefixOverrides="and">
+       <if test="status!=null">
+         status=#{status}
+       </if>
+       <if test="serial!=null">
+         and serial=#{serial}
+       </if>
+       <if test="from!=null">
+         and apply_transfer.from=#{from}
+       </if>
+       <if test="to!=null">
+         and apply_transfer.to=#{to}
+       </if>
+    </trim>
+<!--         LIMIT ${pagefirst},${pagelast} -->
+  </select>
+  
+  <!-- <update id="updateByPrimaryKey" parameterType="com.administration.subject.pojo.ApplyTransfer">
+   
+    update apply_transfer
+    
+    set serial = #{serial,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=BIGINT},
+      from = #{from,jdbcType=BIGINT},
+      to = #{to,jdbcType=BIGINT},
+      number = #{number,jdbcType=DECIMAL},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      approve_user = #{approveUser,jdbcType=BIGINT},
+      approve_time = #{approveTime,jdbcType=TIMESTAMP},
+      comment = #{comment,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

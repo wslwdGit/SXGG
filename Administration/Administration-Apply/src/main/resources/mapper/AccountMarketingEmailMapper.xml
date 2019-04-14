@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.administration.apply.dao.AccountMarketingEmailMapper">
+  <resultMap id="AccountMarketMap" type="com.administration.apply.pojo.AccountMarketingEmail">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="strategy_email" jdbcType="TINYINT" property="strategyEmail" />
+    <result column="strategy_sms" jdbcType="TINYINT" property="strategySms" />
+    <result column="service_email" jdbcType="TINYINT" property="serviceEmail" />
+    <result column="service_sms" jdbcType="TINYINT" property="serviceSms" />
+    <result column="briefing_email" jdbcType="TINYINT" property="briefingEmail" />
+    <result column="briefing_sms" jdbcType="TINYINT" property="briefingSms" />
+    <result column="report_valid" jdbcType="TINYINT" property="reportValid" />
+    <result column="calendar_email" jdbcType="TINYINT" property="calendarEmail" />
+    <result column="subscribe_valid" jdbcType="TINYINT" property="subscribeValid" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="login" jdbcType="VARCHAR" property="login" />
+    <result column="total" jdbcType="VARCHAR" property="total"/>
+  </resultMap>
+ 
+  <select id="findAccountMarket" resultMap="AccountMarketMap">
+   select *  from 
+   (SELECT
+		account_marketing_email.*,
+		concat( account.first_name, account.middle_name, account.last_name ) AS NAME 
+		,account.login,(select count(1) from account_marketing_email) as total
+   FROM
+		account_marketing_email
+		INNER JOIN account ON account_marketing_email.account_id = account.id
+   ) as alls
+     <trim prefix="WHERE" prefixOverrides="and">
+		 <if test="name!=null">
+		    name=#{name}
+		 </if>
+		 <if test="login!=null">
+		   and login=#{login}
+		 </if>
+	</trim>
+<!-- 		  LIMIT ${pagefirst},${pagelast} -->
+  </select>
+  
+  
+</mapper>

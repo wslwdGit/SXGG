@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.administration.apply.dao.ApplyLeverageMapper">
+  <resultMap id="ApplyLeverageMap" type="com.administration.apply.pojo.ApplyLeverage">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="serial" jdbcType="VARCHAR" property="serial" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="login" jdbcType="BIGINT" property="login" />
+    <result column="old_leverage" jdbcType="INTEGER" property="oldLeverage" />
+    <result column="new_leverage" jdbcType="INTEGER" property="newLeverage" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="approve_user" jdbcType="BIGINT" property="approveUser" />
+    <result column="approve_time" jdbcType="TIMESTAMP" property="approveTime" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="total" jdbcType="VARCHAR" property="total"/>
+  </resultMap>
+   
+   
+  <sql id="Leverage_List">
+    apply_leverage.id, apply_leverage.serial, apply_leverage.account_id, apply_leverage.login, apply_leverage.old_leverage, apply_leverage.new_leverage, apply_leverage.status, apply_leverage.apply_time, apply_leverage.approve_user, 
+    apply_leverage.approve_time, apply_leverage.comment
+  </sql>
+  
+   
+  
+  <update id="UpdateApply" parameterType="java.util.Map"  >
+  UPDATE ${tablename} 
+    <trim prefix="set" prefixOverrides=",">
+       approve_time=now()
+    <if test="comment!=null">
+       , comment=#{comment}
+    </if>
+    <if test="approveuser!=null">
+       ,approve_user=#{approveuser}
+    </if>
+    <if test="status!=null">
+       ,status=#{status}
+    </if>
+   </trim> 
+   where id=#{id}
+  </update>
+  
+  <!-- Find Applyleverage -->
+  <select id="FindApplyLeverage" parameterType="java.util.Map"  resultMap="ApplyLeverageMap">
+    select *  from 
+    (select
+    	<include refid="Leverage_List" />
+    	,concat(account.first_name,middle_name,last_name) as name
+    	,(select count(1) from apply_leverage) as total
+    	from apply_leverage 
+    	inner join account on apply_leverage.account_id=account.id
+		<trim prefix="WHERE" prefixOverrides="AND">
+		    <if test="serial != null">
+		     apply_leverage.serial=#{serial}
+		    </if> 
+		    <if test="status != null">
+		      and apply_leverage.status=#{status}
+		    </if>
+		</trim>
+	)  alls 
+		<trim prefix="WHERE">
+		  <if test="name!=null">
+		    name=#{name}
+		  </if>
+		</trim>
+<!-- 		  LIMIT ${pagefirst},${pagelast} -->
+  </select>
+  
+  
+  
+</mapper>
